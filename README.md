@@ -342,13 +342,13 @@ Versioned prompt templates with variable substitution:
 
 ```mermaid
 flowchart LR
-    CREATE[Create Template<br/>Hello {name}!] --> VERSION[Version 1]
-    VERSION --> UPDATE[Update Template]
-    UPDATE --> VERSION2[Version 2<br/>Hello {name}, welcome!]
-    VERSION2 --> RENDER[Render with Variables]
-    RENDER --> RESULT[Hello Alice, welcome!]
+    CREATE["Create Template<br/>Hello name!"] --> VERSION["Version 1"]
+    VERSION --> UPDATE["Update Template"]
+    UPDATE --> VERSION2["Version 2<br/>Hello name, welcome!"]
+    VERSION2 --> RENDER["Render with Variables"]
+    RENDER --> RESULT["Hello Alice, welcome!"]
     
-    VERSION --> HISTORY[Version History<br/>Last 100 versions]
+    VERSION --> HISTORY["Version History<br/>Last 100 versions"]
     
     style VERSION fill:#4CAF50
     style VERSION2 fill:#2196F3

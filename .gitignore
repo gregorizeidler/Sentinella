@@ -48,7 +48,8 @@ htmlcov/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb
+# Allow evaluation notebook
+!notebooks/evaluation/evaluation_demo.ipynb
 
 # Terraform
 *.tfstate

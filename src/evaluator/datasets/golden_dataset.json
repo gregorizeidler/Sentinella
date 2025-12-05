@@ -1,0 +1,63 @@
+[
+  {
+    "prompt": "What is the capital of France?",
+    "expected_answer": "The capital of France is Paris.",
+    "category": "geography",
+    "complexity": "simple"
+  },
+  {
+    "prompt": "Explain the difference between a list and a tuple in Python.",
+    "expected_answer": "A list is mutable (can be modified) while a tuple is immutable (cannot be modified). Lists use square brackets [] and tuples use parentheses ().",
+    "category": "programming",
+    "complexity": "medium"
+  },
+  {
+    "prompt": "Write a Python function to calculate the factorial of a number.",
+    "expected_answer": "def factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    return n * factorial(n - 1)",
+    "category": "programming",
+    "complexity": "medium"
+  },
+  {
+    "prompt": "What are the main causes of climate change?",
+    "expected_answer": "The main causes of climate change include greenhouse gas emissions from burning fossil fuels, deforestation, industrial processes, and agricultural practices.",
+    "category": "science",
+    "complexity": "medium"
+  },
+  {
+    "prompt": "Summarize the concept of machine learning in one sentence.",
+    "expected_answer": "Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed.",
+    "category": "technology",
+    "complexity": "simple"
+  },
+  {
+    "prompt": "Explain step by step how a neural network learns.",
+    "expected_answer": "A neural network learns through a process called backpropagation: 1) Forward pass: input data flows through layers producing output, 2) Loss calculation: compare output with expected result, 3) Backward pass: calculate gradients, 4) Weight update: adjust weights using optimization algorithm like gradient descent.",
+    "category": "technology",
+    "complexity": "complex"
+  },
+  {
+    "prompt": "What is 2 + 2?",
+    "expected_answer": "2 + 2 equals 4.",
+    "category": "math",
+    "complexity": "simple"
+  },
+  {
+    "prompt": "Compare and contrast REST and GraphQL APIs.",
+    "expected_answer": "REST uses multiple endpoints with fixed data structures, while GraphQL uses a single endpoint with flexible queries. REST is simpler but can lead to over-fetching, while GraphQL allows clients to request exactly what they need but adds complexity.",
+    "category": "technology",
+    "complexity": "complex"
+  },
+  {
+    "prompt": "Translate 'Hello, how are you?' to Spanish.",
+    "expected_answer": "'Hello, how are you?' in Spanish is 'Hola, ¿cómo estás?'",
+    "category": "translation",
+    "complexity": "simple"
+  },
+  {
+    "prompt": "What is the time complexity of binary search?",
+    "expected_answer": "The time complexity of binary search is O(log n), where n is the number of elements in the sorted array.",
+    "category": "programming",
+    "complexity": "medium"
+  }
+]
+

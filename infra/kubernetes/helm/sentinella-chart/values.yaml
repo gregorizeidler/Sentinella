@@ -1,0 +1,57 @@
+replicaCount: 3
+
+image:
+  repository: sentinella/gateway
+  pullPolicy: IfNotPresent
+  tag: "0.1.0"
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: sentinella.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+env:
+  GATEWAY_HOST: "0.0.0.0"
+  GATEWAY_PORT: "8000"
+  LOG_LEVEL: "INFO"
+  REDIS_HOST: "sentinella-redis"
+  REDIS_PORT: "6379"
+  LANGFUSE_HOST: "http://langfuse:3000"
+
+secrets:
+  # These should be stored in Kubernetes secrets
+  # kubectl create secret generic sentinella-secrets --from-env-file=.env
+  secretName: sentinella-secrets
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+

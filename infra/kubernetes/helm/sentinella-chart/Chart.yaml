@@ -1,0 +1,7 @@
+apiVersion: v2
+name: sentinella-chart
+description: Helm chart for Sentinella AI Gateway
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+

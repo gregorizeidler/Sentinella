@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=postgres
+      - LANGFUSE_HOST=http://langfuse:3000
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+      - langfuse
+    volumes:
+      - ./src:/app/src
+    restart: unless-stopped
+    networks:
+      - sentinella-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - sentinella-network
+    command: redis-server --appendonly yes
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: langfuse
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: langfuse_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - sentinella-network
+
+  langfuse:
+    image: langfuse/langfuse:latest
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://langfuse:langfuse_password@postgres:5432/langfuse
+      NEXTAUTH_SECRET: your-nextauth-secret-change-in-production
+      NEXTAUTH_URL: http://localhost:3000
+      SALT: your-salt-change-in-production
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - sentinella-network
+
+volumes:
+  redis-data:
+  postgres-data:
+
+networks:
+  sentinella-network:
+    driver: bridge
+
